@@ -9,6 +9,7 @@ import (
 func Get_Board(c *gin.Context) {
 
 	reply := services.Get_Board()
+	
 	c.JSON(200, gin.H{"message": "Good duck Processing that 😉", "data": reply})
 }
 
@@ -16,7 +17,7 @@ func Get_Board(c *gin.Context) {
 
 // @Used to convert base64 string into unit8array
 
-	// b, err := base64.StdEncoding.DecodeString("")
+// b, err := base64.StdEncoding.DecodeString("")
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
