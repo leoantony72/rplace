@@ -12,7 +12,7 @@ func main() {
 	router := gin.Default()
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET","PUT", "PATCH"},
+		AllowMethods:     []string{"*"},
 		AllowHeaders:     []string{"Origin"},
 		ExposeHeaders:    []string{"Content-Length"},
 		AllowCredentials: true,
@@ -24,6 +24,7 @@ func main() {
 	router.GET("/", controllers.Ping)
 	router.GET("/board", controllers.Get_Board)
 	router.POST("/tile", controllers.Get_Tile)
+	// router.POST("/test", controllers.Test)
 
 	router.Run("localhost:8080")
 

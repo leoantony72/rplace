@@ -8,12 +8,10 @@ import (
 	
 
 func NPool() (redis.Conn){
-
 	conn,err := redis.Dial("tcp","localhost:6379")
 	if err != nil{
 		log.Panic(err)
 	}
 
 	return conn
-
 }

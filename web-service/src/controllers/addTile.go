@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	// "fmt"
+	"fmt"
 
 	"github.com/gin-gonic/gin"
 	"github.com/leoantony72/rplace/src/services"
@@ -18,10 +18,14 @@ func Get_Tile(c *gin.Context) {
 
 	//@binds the data from query params to Body struct
 	if err := c.ShouldBindQuery(&body); err != nil {
+		fmt.Println(err)
 		panic(err)
 	}
 
 	//@passes the cordinates and returns color
 	color := services.Insert_Tile(body.X, body.Y, body.Color)
+
+	services.Wshandler(c.Writer, c.Request)
+
 	c.JSON(201, gin.H{"status": "success", "color": color})
 }
