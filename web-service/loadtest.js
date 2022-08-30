@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-var j = 999000;
+var j = 0;
 for (var i = 0; i < 520; i++) {
   var random1 = generateRandom((min = 0), (max = 999));
   var random2 = generateRandom((min = 0), (max = 999));

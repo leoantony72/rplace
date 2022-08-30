@@ -9,10 +9,10 @@ import (
 
 func Insert_Tile(offset, value int64) int64 {
 
-	var off string = strconv.FormatInt(offset,10)
-	t := "#"+off
 	conn := config.NPool()
-	defer conn.Close()
+	var off string = strconv.FormatInt(offset, 10)
+	t := "#" + off
+
 	_, err := conn.Do(
 		"BITFIELD",
 		"place",
@@ -30,6 +30,8 @@ func Insert_Tile(offset, value int64) int64 {
 		t,
 	))
 	utils.CheckErr(err)
+
+	defer conn.Close()
 
 	return reply[0].(int64)
 

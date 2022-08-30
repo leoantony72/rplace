@@ -24,8 +24,7 @@ func Get_Tile(c *gin.Context) {
 
 	//@passes the cordinates and returns color
 	color := services.Insert_Tile(body.X, body.Y, body.Color)
-
-	services.Wshandler(c.Writer, c.Request)
+	services.Brodcast(body.X, body.Y, body.Color)
 
 	c.JSON(201, gin.H{"status": "success", "color": color})
 }
