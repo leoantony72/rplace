@@ -17,6 +17,8 @@ func main() {
 
 func test(c *gin.Context) {
 
+	go services.Echo()
 	ctx := context.Background()
-	services.Consume(c.Writer, c.Request,ctx)
+	services.Wshandler(c.Writer, c.Request, ctx)
+
 }

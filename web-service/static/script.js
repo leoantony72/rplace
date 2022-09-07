@@ -28,7 +28,7 @@ const get = async () => {
 
   const data = await res.json();
   var uintArray = Base64Binary.decode(data.data);
-  console.log(uintArray);
+  // console.log(uintArray);
   console.log(uintArray.byteLength);
 
   var width = 1000;
@@ -42,14 +42,45 @@ const get = async () => {
     const y = Math.floor(i / width);
     var d = uintArray[i];
 
-    fillRect(d, x, y)
+    fillRect(d, x, y);
   }
 };
 get();
 
+//websocket connection
+
+/*---------------------------------*/
+
+/*
+@Fill the rectangle
+@d - color hex
+@x - x_cords
+@y - y_cords
+*/
 const fillRect = (d, x, y) => {
   ctx.fillStyle = DEFAULT_COLOR_PALETTE[d];
-  ctx.fillRect(x, y, 90, 90);
+  ctx.fillRect(x, y, 10, 10);
+};
+url = "ws://localhost:8081/test";
+c = new WebSocket(url);
+
+// send = function(data){
+//   $("#output").append((new Date())+ " ==> "+data+"\n")
+//   c.send({"message":"nice"})
+// }
+
+c.onopen = function () {
+  // setInterval(
+  //   function(){ send("ping") }
+  // , 1000 )
+  console.log("websocket open");
+};
+
+c.onmessage = function (msg) {
+  // $("#output").append(new Date() + " <== " + msg.data + "\n");
+ const json_msg = JSON.stringify(msg);
+ const data = JSON.parse(msg.data);
+ fillRect(data.color,data.x,data.y)
 };
 
 var Base64Binary = {
