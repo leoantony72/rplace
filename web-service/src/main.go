@@ -28,6 +28,7 @@ func main() {
 	router.GET("/ping", controllers.Ping)
 	router.GET("/board", controllers.Get_Board)
 	router.POST("/tile", controllers.Get_Tile)
+	router.GET("/flush",controllers.Flush)
 	// router.POST("/test", controllers.Test)
 
 	router.Run("0.0.0.0:8080")
