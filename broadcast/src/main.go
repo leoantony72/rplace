@@ -12,7 +12,7 @@ func main() {
 	router := gin.Default()
 
 	router.GET("/test", test)
-	router.Run("localhost:8081")
+	router.Run("0.0.0.0:8081")
 }
 
 func test(c *gin.Context) {

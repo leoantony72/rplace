@@ -26,6 +26,6 @@ func main() {
 	router.POST("/tile", controllers.Get_Tile)
 	// router.POST("/test", controllers.Test)
 
-	router.Run("localhost:8080")
+	router.Run("0.0.0.0:8080")
 
 }

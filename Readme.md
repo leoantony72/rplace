@@ -1,8 +1,20 @@
 ## Introduction
 
-<P>For those who don't know reddit r/place was one of the biggest social experiments where anyone can place a pixel on a 1000x1000 pixel board. 
+<P>For those who don't know reddit r/place was one of the biggest social experiments where anyone can place a pixel on a 1000x1000 pixel board.
 
 [reddit R/place Official](https://www.reddit.com/r/place/)
+
+# Docker Build
+
+```bash
+docker-compose up --build
+```
+```bash
+cd web-service && go run src/main.go
+```
+```bash
+cd broadcast && go run src/main.go
+```
 
 &nbsp;
 
@@ -28,4 +40,3 @@ I am new to golang so the project structure might be weird for those who are che
 When request comes in Controllers pass it to service and does some work or is send to the database through the model.Results are passed back up to the service layer and then to the controllers.
 
 <hr>
-
