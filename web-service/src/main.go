@@ -10,6 +10,9 @@ import (
 
 func main() {
 	router := gin.Default()
+	router.LoadHTMLFiles("static/index.html")
+	router.Static("/css","static/css")
+	router.Static("/js","static/js")
 	router.Use(cors.New(cors.Config{
 		AllowOrigins:     []string{"*"},
 		AllowMethods:     []string{"*"},
@@ -21,7 +24,8 @@ func main() {
 		},
 		MaxAge: 12 * time.Hour,
 	}))
-	router.GET("/", controllers.Ping)
+	router.GET("/",controllers.Home)
+	router.GET("/ping", controllers.Ping)
 	router.GET("/board", controllers.Get_Board)
 	router.POST("/tile", controllers.Get_Tile)
 	// router.POST("/test", controllers.Test)
